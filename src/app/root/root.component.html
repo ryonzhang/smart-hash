@@ -39,7 +39,7 @@
                     
                         <tr class="{{getClass(trans.type)}}" *ngFor="let trans of info.transactions">
                           <td><a (click)="clickLink(trans.id)" > {{trans.id}}</a></td>
-                          <td>{{parseInt(trans.amount)/1000000000000000000}}</td>
+                          <td>{{trans.amount/1000000000000000000}}</td>
                           <td>{{getClass(trans.type)}}</td>
                         </tr>
                    
