@@ -30,7 +30,7 @@
               <table class="table table-striped table-bordered table-list">
                 <thead>
                   <tr>
-                      <th>Income Address</th>
+                      <th>Incoming Transaction ID</th>
                       <th>Amount</th>
                       <th>Danger Level</th>
                   </tr> 
@@ -38,8 +38,8 @@
                 <tbody>
                     
                         <tr class="{{getClass(trans.type)}}" *ngFor="let trans of info.transactions">
-                          <td>{{trans.id}}</td>
-                          <td>{{trans.amount}}</td>
+                          <td><a (click)="clickLink(trans.id)" > {{trans.id}}</a></td>
+                          <td>{{parseInt(trans.amount)/1000000000000000000}}</td>
                           <td>{{getClass(trans.type)}}</td>
                         </tr>
                    

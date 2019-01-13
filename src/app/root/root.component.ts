@@ -29,11 +29,11 @@ export class RootComponent implements OnInit {
   title = 'smart-hash';
   isSearch = true;
   address:string;
-  info:any;
+
   query:any;
   itemsPerPage: 10;
   currentPage:1
-
+  info:any;
 
   setSearch(flag :boolean) {
     this.isSearch = flag;
@@ -41,9 +41,9 @@ export class RootComponent implements OnInit {
 
   getClass(type :number) {
     const typeMap = {
-      1:'Dangerous',
-      2:'Unknown',
-      3:'Clean'
+      1:'Unknown',
+      2:'Clean',
+      3:'Dangerous'
     };
     return typeMap[type];
   }
@@ -53,6 +53,10 @@ export class RootComponent implements OnInit {
     this.http.get('http://hackathon-api.10fungames.com/api/'+this.address+'/info').subscribe(json =>this.info = json);
     this.setSearch(false);
   } 
+
+  clickLink(address:string){
+    window.location.href = 'https://etherscan.io/address/'+address;
+  }
 
   change(event: any){
       this.address = event.target.value ;
@@ -71,4 +75,5 @@ export class RootComponent implements OnInit {
   hideAlert(){
     $(".alert").hide();
   }
+
 }
