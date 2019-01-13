@@ -15,7 +15,6 @@ export class RootComponent implements OnInit {
    // this.http.get('http://hackathon-api.10fungames.com/api/'+this.address+'/info').subscribe(json => console.log(json));
     this.title = 'smart-hash';
     this.isSearch = true;
-    this.address = "0xea4ad96481d0f5d9d737ff6a3e8027ff0b52843ef37ba48a5a50d68350f07b73";
     this.info = {
       score:0,
       transactions:[]
@@ -23,12 +22,13 @@ export class RootComponent implements OnInit {
     this.itemsPerPage= 10;
     this.currentPage=1;
     this.hideAlert();
+    this.address='';
   }
  
 
   title = 'smart-hash';
   isSearch = true;
-  address = "0xea4ad96481d0f5d9d737ff6a3e8027ff0b52843ef37ba48a5a50d68350f07b73";
+  address:string;
   info:any;
   query:any;
   itemsPerPage: 10;
@@ -49,9 +49,14 @@ export class RootComponent implements OnInit {
   }
 
   click() {
-    this.setSearch(false);
+    
     this.http.get('http://hackathon-api.10fungames.com/api/'+this.address+'/info').subscribe(json =>this.info = json);
+    this.setSearch(false);
   } 
+
+  change(event: any){
+      this.address = event.target.value ;
+  }
 
   setScore(score:number){
      this.http.post('http://hackathon-api.10fungames.com/api/score',{address:this.address,score}).subscribe(json =>console.log());
