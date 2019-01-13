@@ -54,7 +54,7 @@ export class RootComponent implements OnInit {
   } 
 
   setScore(score:number){
-     this.http.post('http://hackathon-api.10fungames.com/api/score',{address:this.address,score}).subscribe(json =>this.info = json);
+     this.http.post('http://hackathon-api.10fungames.com/api/score',{address:this.address,score}).subscribe(json =>console.log());
      this.showAlert();
     }
 
